@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Japanese Furigana Generator</title>
+        <script
+            type="text/javascript"
+            src="scripts/kuromoji/build/kuromoji.js"></script>
+        <script type="text/javascript" src="scripts/wanakana.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    </head>
+    <body>
+        <h3>Japanese Furigana Generator</h3>
+        <h5>Input</h5>
+        <div>
+            <textarea id="inputText" rows="4" cols="50">
+ここに日本語を書いて下さい。</textarea
+            >
+        </div>
+        <div>
+            <button id="generateButton">Generate Furigana</button>
+        </div>
+        <h5>Output - Raw HTML</h5>
+        <div><textarea id="outputHTML" rows="4" cols="50"></textarea></div>
+        <h5>Output - Rendered HTML</h5>
+        <div id="outputText">...</div>
+        <div class="description">
+            Copyright © 2024
+            <a href="https://github.com/christopherball" target="_blank"
+                >Christopher Ball</a
+            ><br />
+            License:
+            <a
+                href="https://github.com/christopherball/japaneseFuriganaGenerator/blob/main/LICENSE"
+                >MIT License</a
+            >, Source:
+            <a
+                href="https://github.com/christopherball/japaneseFuriganaGenerator"
+                >Github</a
+            ><br />
+            Credits:
+            <a href="https://github.com/takuyaa/kuromoji.js">Kuromoji.js</a> /
+            <a href="https://github.com/sglkc/kuromoji.js">Fork</a>,
+            <a href="https://github.com/WaniKani/WanaKana">Wanakana</a>
+        </div>
+        <script type="text/javascript" src="scripts/index.js"></script>
+    </body>
+</html>
