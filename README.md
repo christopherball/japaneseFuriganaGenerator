@@ -1,6 +1,9 @@
 # Japanese Furigana Generator
 Generates HTML ruby markup readings based on native Japanese input, using only client-side technologies.
 
+## Caveats
+Once in a while, the chosen readings will not be the correct choice, and in such cases you can update the generated HTML in real-time to see your changes reflected. 
+
 ## Credits
 
 Copyright © 2024 <a href="https://github.com/christopherball" target="_blank">Christopher Ball</a><br />

@@ -107,7 +107,8 @@ function generateFurigana(text) {
                 }
             });
 
-            document.getElementById("outputText").innerHTML = outputHtml;
+            document.getElementById("outputRenderedHTML").innerHTML =
+                outputHtml;
             document.getElementById("outputHTML").value = outputHtml;
         });
 }
@@ -118,6 +119,13 @@ function main() {
         .addEventListener("click", function () {
             const inputText = document.getElementById("inputText").value;
             generateFurigana(inputText);
+        });
+
+    document
+        .getElementById("outputHTML")
+        .addEventListener("input", function () {
+            document.getElementById("outputRenderedHTML").innerHTML =
+                document.getElementById("outputHTML").value;
         });
 }
 

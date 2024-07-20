@@ -11,8 +11,8 @@
     </head>
     <body>
         <h3>Japanese Furigana Generator</h3>
-        <h5>Input</h5>
-        <div>
+        <div class="sectionTitle">Input</div>
+        <div class="textAreaContainer">
             <textarea id="inputText" rows="4" cols="50">
 ここに日本語を書いて下さい。</textarea
             >
@@ -20,10 +20,14 @@
         <div>
             <button id="generateButton">Generate Furigana</button>
         </div>
-        <h5>Output - Raw HTML</h5>
-        <div><textarea id="outputHTML" rows="4" cols="50"></textarea></div>
-        <h5>Output - Rendered HTML</h5>
-        <div id="outputText">...</div>
+        <br />
+        <div class="sectionTitle">Output - Raw HTML</div>
+        <div class="textAreaContainer">
+            <textarea id="outputHTML" rows="4" cols="50"></textarea>
+        </div>
+        <br />
+        <div class="sectionTitle">Output - Rendered HTML</div>
+        <div id="outputRenderedHTML"></div>
         <div class="description">
             Copyright © 2024
             <a href="https://github.com/christopherball" target="_blank"
