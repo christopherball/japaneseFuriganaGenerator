@@ -114,6 +114,7 @@ function generateFurigana(text) {
                 }
 
                 document.getElementById("outputHTML").innerHTML += outputHtml;
+                document.getElementById("outputHTML").value += outputHtml;
                 document.getElementById("outputRenderedHTML").innerHTML +=
                     outputHtml;
             });
@@ -122,7 +123,7 @@ function generateFurigana(text) {
 
 function onGenerateButton() {
     const inputText = document.getElementById("inputText").value;
-    document.getElementById("outputHTML").innerHTML = "";
+    document.getElementById("outputHTML").value = "";
     document.getElementById("outputRenderedHTML").innerHTML = "";
     generateFurigana(inputText);
 }
