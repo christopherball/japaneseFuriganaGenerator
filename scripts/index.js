@@ -91,35 +91,46 @@ function generateFurigana(text) {
                 return;
             }
 
-            const tokens = tokenizer.tokenize(text);
-            let outputHtml = "";
+            const chunks = text.split(/\n/g);
+            chunks.forEach((chunk, index) => {
+                let outputHtml = "";
+                const tokens = tokenizer.tokenize(chunk);
 
-            tokens.forEach((token) => {
-                let readingHiragana = wanakana.toHiragana(token.reading);
+                tokens.forEach((token) => {
+                    let readingHiragana = wanakana.toHiragana(token.reading);
 
-                if (token.surface_form !== readingHiragana) {
-                    outputHtml += splitToken(
-                        token.surface_form,
-                        readingHiragana
-                    );
-                } else {
-                    outputHtml += token.surface_form;
+                    if (token.surface_form !== readingHiragana) {
+                        outputHtml += splitToken(
+                            token.surface_form,
+                            readingHiragana
+                        );
+                    } else {
+                        outputHtml += token.surface_form;
+                    }
+                });
+
+                if (index < chunks.length - 1) {
+                    outputHtml += "<br/>";
                 }
-            });
 
-            document.getElementById("outputRenderedHTML").innerHTML =
-                outputHtml;
-            document.getElementById("outputHTML").value = outputHtml;
+                document.getElementById("outputHTML").innerHTML += outputHtml;
+                document.getElementById("outputRenderedHTML").innerHTML +=
+                    outputHtml;
+            });
         });
+}
+
+function onGenerateButton() {
+    const inputText = document.getElementById("inputText").value;
+    document.getElementById("outputHTML").innerHTML = "";
+    document.getElementById("outputRenderedHTML").innerHTML = "";
+    generateFurigana(inputText);
 }
 
 function main() {
     document
         .getElementById("generateButton")
-        .addEventListener("click", function () {
-            const inputText = document.getElementById("inputText").value;
-            generateFurigana(inputText);
-        });
+        .addEventListener("click", onGenerateButton);
 
     document
         .getElementById("outputHTML")
