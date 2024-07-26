@@ -29,6 +29,12 @@ div#outputRenderedHTML {
     color: white;
 }
 
+div#outputAnkiShorthand {
+    width: 100%;
+    font-size: 1em;
+    color: white;
+}
+
 div.description {
     font-size: 1em;
     text-align: left;

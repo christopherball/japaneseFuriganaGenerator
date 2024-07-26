@@ -115,15 +115,32 @@ function generateFurigana(text) {
 
                 document.getElementById("outputHTML").innerHTML += outputHtml;
                 document.getElementById("outputHTML").value += outputHtml;
+                document.getElementById("outputAnkiShorthand").innerHTML +=
+                    outputHtml
+                        .replaceAll("<ruby>", " ")
+                        .replaceAll("</ruby>", "")
+                        .replaceAll("<rt>", "[")
+                        .replaceAll("</rt>", "]")
+                        .trim();
                 document.getElementById("outputRenderedHTML").innerHTML +=
                     outputHtml;
             });
         });
 }
 
+function copyToClipboard(value) {
+    var tempInput = document.createElement("input");
+    tempInput.value = value;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+}
+
 function onGenerateButton() {
     const inputText = document.getElementById("inputText").value;
     document.getElementById("outputHTML").value = "";
+    document.getElementById("outputAnkiShorthand").innerHTML = "";
     document.getElementById("outputRenderedHTML").innerHTML = "";
     generateFurigana(inputText);
 }
@@ -133,11 +150,27 @@ function main() {
         .getElementById("generateButton")
         .addEventListener("click", onGenerateButton);
 
+    document.getElementById("copyButton1").addEventListener("click", () => {
+        copyToClipboard(document.getElementById("outputHTML").value);
+    });
+
+    document.getElementById("copyButton2").addEventListener("click", () => {
+        copyToClipboard(
+            document.getElementById("outputAnkiShorthand").innerHTML
+        );
+    });
+
     document
         .getElementById("outputHTML")
         .addEventListener("input", function () {
-            document.getElementById("outputRenderedHTML").innerHTML =
-                document.getElementById("outputHTML").value;
+            let tempHTML = document.getElementById("outputHTML").value;
+            document.getElementById("outputRenderedHTML").innerHTML = tempHTML;
+            document.getElementById("outputAnkiShorthand").innerHTML = tempHTML
+                .replaceAll("<ruby>", " ")
+                .replaceAll("</ruby>", "")
+                .replaceAll("<rt>", "[")
+                .replaceAll("</rt>", "]")
+                .trim();
         });
 }
 
