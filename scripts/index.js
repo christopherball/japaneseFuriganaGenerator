@@ -159,11 +159,15 @@ function onGenerateButton() {
 
 function onInsertDefinition() {
     let definition = document.getElementById("definition").value;
-    document.getElementById("inputText").value +=
-        document.getElementById("inputText").value.indexOf("Definitions") != -1
-            ? definition + "\n"
-            : "\n\n" + "Definitions\n" + definition + "\n";
-    document.getElementById("definition").value = "";
+
+    if (definition != null && definition.length > 0) {
+        document.getElementById("inputText").value +=
+            document.getElementById("inputText").value.indexOf("Definitions") !=
+            -1
+                ? definition + "\n"
+                : "\n\n" + "Definitions\n" + definition + "\n";
+        document.getElementById("definition").value = "";
+    }
 }
 
 function onSelectTerm(event) {
