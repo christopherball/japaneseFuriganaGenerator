@@ -164,10 +164,10 @@ function onGenerateButton() {
 
 function onInsertDefinition() {
     let definition = document.getElementById("definition").value;
-    document.getElementById("inputText").value += insertedDefinitions
-        ? definition + "\n"
-        : "\n\n" + "Definitions\n" + definition + "\n";
-    insertedDefinitions = true;
+    document.getElementById("inputText").value +=
+        document.getElementById("inputText").value.indexOf("Definitions") != -1
+            ? definition + "\n"
+            : "\n\n" + "Definitions\n" + definition + "\n";
     document.getElementById("definition").value = "";
 }
 
@@ -177,6 +177,10 @@ function onSelectTerm(event) {
         event.target.selectionEnd
     );
     document.getElementById("definition").value = selection + ": ";
+}
+
+function hasFocus(el) {
+    return document.activeElement === el;
 }
 
 function main() {
@@ -192,6 +196,17 @@ function main() {
         copyToClipboard(
             document.getElementById("outputAnkiShorthand").innerHTML
         );
+    });
+
+    document.addEventListener("click", () => {
+        let tempDefEl = document.getElementById("definition");
+        if (
+            tempDefEl.value.length > 0 &&
+            !hasFocus(document.getElementById("inputText")) &&
+            !hasFocus(tempDefEl)
+        ) {
+            tempDefEl.value = "";
+        }
     });
 
     document
@@ -215,5 +230,5 @@ function main() {
                 .trim();
         });
 }
-let insertedDefinitions = false;
+
 window.onload = main();

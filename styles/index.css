@@ -7,7 +7,7 @@ body {
 div.textAreaContainer,
 div.inputContainer,
 div.outputContainer {
-    width: calc(100% - 12px);
+    width: 95%;
 }
 
 textarea {
