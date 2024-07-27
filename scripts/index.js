@@ -1,8 +1,3 @@
-function isKanji(character) {
-    let regex = /[\u4e00-\u9faf\u3400-\u4dbf]/;
-    return regex.test(character);
-}
-
 function splitToken(surfaceForm, readingHiragana) {
     let lastHiraganaIndex = null;
     let extractedHiraganaChunk = "";
@@ -227,6 +222,7 @@ function main() {
                 .replaceAll("</ruby>", "")
                 .replaceAll("<rt>", "[")
                 .replaceAll("</rt>", "]")
+                .replace(/<div.*|<\/div>/gm, "")
                 .trim();
         });
 }
