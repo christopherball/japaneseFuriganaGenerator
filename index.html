@@ -10,42 +10,45 @@
         <link rel="stylesheet" type="text/css" href="styles/index.css" />
     </head>
     <body>
-        <h3>Japanese Furigana Generator</h3>
-        <div class="sectionTitle">Input</div>
-        <div class="textAreaContainer">
-            <textarea
-                id="inputText"
-                rows="4"
-                cols="50"
-                placeholder="ここに日本語を書いて下さい。"></textarea>
+        <div class="content">
+            <h3>Japanese Furigana Generator</h3>
+            <div class="sectionTitle">Input</div>
+            <div class="textAreaContainer">
+                <textarea
+                    id="inputText"
+                    rows="4"
+                    cols="50"
+                    placeholder="ここに日本語を書いて下さい。"></textarea>
+            </div>
+            <div class="inputContainer">
+                <input
+                    id="definition"
+                    placeholder="Optional: highlight unknown term, type definition, and insert." />
+            </div>
+            <div>
+                <button id="generateButton">Generate Furigana</button>
+                <button id="defineButton">Insert Definition</button>
+            </div>
+            <br />
+            <div class="sectionTitle">Raw HTML</div>
+            <div class="textAreaContainer">
+                <textarea id="outputHTML" rows="4" cols="50"></textarea>
+            </div>
+            <br />
+            <div class="sectionTitle">Rendered HTML</div>
+            <div class="outputContainer">
+                <div id="outputRenderedHTML"></div>
+            </div>
+            <div><button id="copyButton1">Copy</button></div>
+            <br />
+            <div class="sectionTitle">Anki Shorthand</div>
+            <div class="outputContainer">
+                <div id="outputAnkiShorthand"></div>
+            </div>
+            <div><button id="copyButton2">Copy</button></div>
+            <div class="push"></div>
         </div>
-        <div class="inputContainer">
-            <input
-                id="definition"
-                placeholder="Optional: highlight unknown term, type definition, and insert." />
-        </div>
-        <div>
-            <button id="generateButton">Generate Furigana</button>
-            <button id="defineButton">Insert Definition</button>
-        </div>
-        <br />
-        <div class="sectionTitle">Raw HTML</div>
-        <div class="textAreaContainer">
-            <textarea id="outputHTML" rows="4" cols="50"></textarea>
-        </div>
-        <br />
-        <div class="sectionTitle">Rendered HTML</div>
-        <div class="outputContainer">
-            <div id="outputRenderedHTML"></div>
-        </div>
-        <div><button id="copyButton1">Copy</button></div>
-        <br />
-        <div class="sectionTitle">Anki Shorthand</div>
-        <div class="outputContainer">
-            <div id="outputAnkiShorthand"></div>
-        </div>
-        <div><button id="copyButton2">Copy</button></div>
-        <div class="description">
+        <div class="footer">
             Copyright © 2024
             <a href="https://github.com/christopherball" target="_blank"
                 >Christopher Ball</a

@@ -1,7 +1,18 @@
+html,
+body {
+    height: calc(100vh - 30px);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     background-color: black;
     color: white;
     font-size: 100%;
+}
+
+div.content {
+    min-height: 100%;
+    margin: 0 auto -72px;
 }
 
 div.textAreaContainer,
@@ -14,11 +25,12 @@ textarea {
     width: 100%;
     height: 125px;
     background-color: rgb(77, 77, 77);
-    font-size: 1.2em;
+    font-size: 1em;
     color: white;
     border: 1px solid rgb(180, 180, 180);
     border-radius: 10px;
     padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 input#definition {
@@ -30,6 +42,7 @@ input#definition {
     border: 1px solid rgb(180, 180, 180);
     border-radius: 5px;
     padding-right: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 button {
@@ -65,15 +78,18 @@ div.dHead {
     margin-top: 16px;
 }
 
-div.description {
+div.footer {
     font-size: 1em;
     text-align: left;
     padding: 5px;
-    margin-top: 100px;
-    border-top: 1px white solid;
+    height: 72px;
 }
 
-div.description a {
+div.push {
+    height: 72px;
+}
+
+div.footer a {
     color: limegreen;
     text-decoration: none;
 }
