@@ -4,19 +4,32 @@ body {
     font-size: 100%;
 }
 
-div.textAreaContainer {
+div.textAreaContainer,
+div.inputContainer,
+div.outputContainer {
     width: calc(100% - 12px);
 }
 
 textarea {
     width: 100%;
     height: 125px;
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(77, 77, 77);
     font-size: 1.2em;
     color: white;
-    border: 1px dashed white;
+    border: 1px solid rgb(180, 180, 180);
     border-radius: 10px;
     padding: 5px;
+}
+
+input#definition {
+    width: 100%;
+    height: 20px;
+    background-color: rgb(77, 77, 77);
+    font-size: 1em;
+    color: white;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 5px;
+    padding-right: 5px;
 }
 
 button {
@@ -27,12 +40,29 @@ div#outputRenderedHTML {
     width: 100%;
     font-size: 1.6em;
     color: white;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #2a2a2a;
 }
 
 div#outputAnkiShorthand {
     width: 100%;
     font-size: 1em;
     color: white;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #2a2a2a;
+}
+
+div.dHead,
+div.dTerm {
+    font-size: 16px !important;
+}
+
+div.dHead {
+    margin-top: 16px;
 }
 
 div.description {

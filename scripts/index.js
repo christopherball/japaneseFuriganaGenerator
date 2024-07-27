@@ -92,27 +92,43 @@ function generateFurigana(text) {
             }
 
             const chunks = text.split(/\n/g);
+            let definitionsReached = false;
+
             chunks.forEach((chunk, index) => {
                 let outputHtml = "";
-                const tokens = tokenizer.tokenize(chunk);
 
-                tokens.forEach((token) => {
-                    let readingHiragana = wanakana.toHiragana(token.reading);
+                // Optional 'Definitions' section defined at bottom of input.
+                if (chunk == "Definitions") {
+                    definitionsReached = true;
+                    outputHtml += "<div><div class='dHead'>Definitions</div>";
+                } else if (
+                    definitionsReached == true &&
+                    index < chunks.length - 1
+                ) {
+                    outputHtml += "<div class='dTerm'>" + chunk + "</div>";
+                } else if (
+                    definitionsReached == true &&
+                    index == chunks.length - 1
+                ) {
+                    outputHtml += "</div>";
+                } else {
+                    const tokens = tokenizer.tokenize(chunk);
 
-                    if (token.surface_form !== readingHiragana) {
-                        outputHtml += splitToken(
-                            token.surface_form,
-                            readingHiragana
+                    tokens.forEach((token) => {
+                        let readingHiragana = wanakana.toHiragana(
+                            token.reading
                         );
-                    } else {
-                        outputHtml += token.surface_form;
-                    }
-                });
 
-                if (index < chunks.length - 1) {
-                    outputHtml += "<br/>";
+                        if (token.surface_form !== readingHiragana) {
+                            outputHtml += splitToken(
+                                token.surface_form,
+                                readingHiragana
+                            );
+                        } else {
+                            outputHtml += token.surface_form;
+                        }
+                    });
                 }
-
                 document.getElementById("outputHTML").innerHTML += outputHtml;
                 document.getElementById("outputHTML").value += outputHtml;
                 document.getElementById("outputAnkiShorthand").innerHTML +=
@@ -121,6 +137,7 @@ function generateFurigana(text) {
                         .replaceAll("</ruby>", "")
                         .replaceAll("<rt>", "[")
                         .replaceAll("</rt>", "]")
+                        .replace(/<div.*|<\/div>/gm, "")
                         .trim();
                 document.getElementById("outputRenderedHTML").innerHTML +=
                     outputHtml;
@@ -145,6 +162,23 @@ function onGenerateButton() {
     generateFurigana(inputText);
 }
 
+function onInsertDefinition() {
+    let definition = document.getElementById("definition").value;
+    document.getElementById("inputText").value += insertedDefinitions
+        ? definition + "\n"
+        : "\n\n" + "Definitions\n" + definition + "\n";
+    insertedDefinitions = true;
+    document.getElementById("definition").value = "";
+}
+
+function onSelectTerm(event) {
+    const selection = event.target.value.substring(
+        event.target.selectionStart,
+        event.target.selectionEnd
+    );
+    document.getElementById("definition").value = selection + ": ";
+}
+
 function main() {
     document
         .getElementById("generateButton")
@@ -161,6 +195,14 @@ function main() {
     });
 
     document
+        .getElementById("defineButton")
+        .addEventListener("click", onInsertDefinition);
+
+    document
+        .getElementById("inputText")
+        .addEventListener("select", onSelectTerm);
+
+    document
         .getElementById("outputHTML")
         .addEventListener("input", function () {
             let tempHTML = document.getElementById("outputHTML").value;
@@ -173,5 +215,5 @@ function main() {
                 .trim();
         });
 }
-
+let insertedDefinitions = false;
 window.onload = main();

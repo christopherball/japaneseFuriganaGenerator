@@ -19,25 +19,33 @@
                 cols="50"
                 placeholder="ここに日本語を書いて下さい。"></textarea>
         </div>
+        <div class="inputContainer">
+            <input
+                id="definition"
+                placeholder="Optional: highlight unknown term, type definition, and insert." />
+        </div>
         <div>
             <button id="generateButton">Generate Furigana</button>
+            <button id="defineButton">Insert Definition</button>
         </div>
         <br />
-        <div class="sectionTitle">Output - Raw HTML</div>
+        <div class="sectionTitle">Raw HTML</div>
         <div class="textAreaContainer">
             <textarea id="outputHTML" rows="4" cols="50"></textarea>
         </div>
         <br />
-        <div class="sectionTitle">Output - Rendered HTML</div>
-        <div id="outputRenderedHTML"></div>
-        <div>
-            <button id="copyButton1">Copy</button>
+        <div class="sectionTitle">
+            Rendered HTML <button id="copyButton1">Copy</button>
+        </div>
+        <div class="outputContainer">
+            <div id="outputRenderedHTML"></div>
         </div>
         <br />
-        <div class="sectionTitle">Output - Anki Shorthand</div>
-        <div id="outputAnkiShorthand"></div>
-        <div>
-            <button id="copyButton2">Copy</button>
+        <div class="sectionTitle">
+            Anki Shorthand <button id="copyButton2">Copy</button>
+        </div>
+        <div class="outputContainer">
+            <div id="outputAnkiShorthand"></div>
         </div>
         <div class="description">
             Copyright © 2024
