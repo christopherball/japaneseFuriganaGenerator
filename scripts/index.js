@@ -114,7 +114,10 @@ function generateFurigana(text) {
                             token.reading
                         );
 
-                        if (token.surface_form !== readingHiragana) {
+                        if (
+                            token.surface_form !== readingHiragana &&
+                            token.surface_form !== token.reading
+                        ) {
                             outputHtml += splitToken(
                                 token.surface_form,
                                 readingHiragana
