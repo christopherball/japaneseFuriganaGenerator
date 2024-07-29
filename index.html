@@ -7,6 +7,7 @@
             type="text/javascript"
             src="scripts/kuromoji/build/kuromoji.js"></script>
         <script type="text/javascript" src="scripts/wanakana.min.js"></script>
+        <script type="text/javascript" src="scripts/base64.min.js"></script>
         <link rel="stylesheet" type="text/css" href="styles/index.css" />
     </head>
     <body>
@@ -30,16 +31,20 @@
                 <button id="defineButton">Insert Definition</button>
             </div>
             <br />
-            <div class="sectionTitle">Raw HTML</div>
+            <div class="sectionTitle">HTML</div>
+            <div class="subSectionTitle">Code</div>
             <div class="textAreaContainer">
                 <textarea id="outputHTML" rows="4" cols="50"></textarea>
             </div>
             <br />
-            <div class="sectionTitle">Rendered HTML</div>
+            <div class="subSectionTitle">Render Preview</div>
             <div class="outputContainer">
                 <div id="outputRenderedHTML"></div>
             </div>
-            <div><button id="copyButton1">Copy</button></div>
+            <div>
+                <button id="copyButton1">Copy</button>
+                <button id="playButton">Play Match Maker</button>
+            </div>
             <br />
             <div class="sectionTitle">Anki Shorthand</div>
             <div class="outputContainer">

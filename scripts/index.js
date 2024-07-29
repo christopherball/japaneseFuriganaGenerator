@@ -128,7 +128,7 @@ function generateFurigana(text) {
                         }
                     });
                 }
-                document.getElementById("outputHTML").innerHTML += outputHtml;
+
                 document.getElementById("outputHTML").value += outputHtml;
                 document.getElementById("outputAnkiShorthand").innerHTML +=
                     outputHtml
@@ -151,6 +151,21 @@ function copyToClipboard(value) {
     tempInput.select();
     document.execCommand("copy");
     document.body.removeChild(tempInput);
+}
+
+function onPlayMatchMaker() {
+    Base64.extendString();
+    const encodedHtml = document
+        .getElementById("outputHTML")
+        .value.toBase64URL();
+
+    if (encodedHtml.length > 0) {
+        window.open(
+            "/linguistics/japaneseMatchMaker?html=" +
+                encodedHtml +
+                "&hideInput=1"
+        );
+    }
 }
 
 function onGenerateButton() {
@@ -198,6 +213,10 @@ function main() {
             document.getElementById("outputAnkiShorthand").innerHTML
         );
     });
+
+    document
+        .getElementById("playButton")
+        .addEventListener("click", onPlayMatchMaker);
 
     document.getElementById("definition").addEventListener("click", () => {
         if (document.getElementById("definition").value.length == 0) {

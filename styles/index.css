@@ -47,6 +47,7 @@ input#definition {
 
 button {
     border-radius: 5px;
+    margin-top: 3px;
 }
 
 div#outputRenderedHTML {
@@ -96,4 +97,9 @@ div.footer a {
 
 div.sectionTitle {
     color: #e93b81;
+}
+
+div.subSectionTitle {
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
