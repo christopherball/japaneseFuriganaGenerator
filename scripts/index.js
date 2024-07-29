@@ -115,6 +115,7 @@ function generateFurigana(text) {
                         );
 
                         if (
+                            token.reading !== undefined &&
                             token.surface_form !== readingHiragana &&
                             token.surface_form !== token.reading
                         ) {
@@ -173,16 +174,14 @@ function onInsertDefinition() {
     }
 }
 
+let lastSelectedTerm = "";
+
 function onSelectTerm(event) {
     const selection = event.target.value.substring(
         event.target.selectionStart,
         event.target.selectionEnd
     );
-    document.getElementById("definition").value = selection + ": ";
-}
-
-function hasFocus(el) {
-    return document.activeElement === el;
+    lastSelectedTerm = selection + ": ";
 }
 
 function main() {
@@ -200,14 +199,10 @@ function main() {
         );
     });
 
-    document.addEventListener("click", () => {
-        let tempDefEl = document.getElementById("definition");
-        if (
-            tempDefEl.value.length > 0 &&
-            !hasFocus(document.getElementById("inputText")) &&
-            !hasFocus(tempDefEl)
-        ) {
-            tempDefEl.value = "";
+    document.getElementById("definition").addEventListener("click", () => {
+        if (document.getElementById("definition").value.length == 0) {
+            document.getElementById("definition").value = lastSelectedTerm;
+            lastSelectedTerm = "";
         }
     });
 
