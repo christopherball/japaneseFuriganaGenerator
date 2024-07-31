@@ -91,7 +91,7 @@ function generateFurigana(text) {
 
             if (parseMode == "default") {
                 chunks = text.split(/\n/g).map((c) => {
-                    return c + "<br/>";
+                    return c;
                 });
             } else {
                 chunks = text
@@ -158,13 +158,14 @@ function onPlayMatchMaker() {
     Base64.extendString();
     const encodedHtml = document
         .getElementById("outputHTML")
-        .value.toBase64URL();
+        .value.replaceAll("<br/>")
+        .toBase64URL();
 
     if (encodedHtml.length > 0) {
         window.open(
             "/linguistics/japaneseMatchMaker?html=" +
                 encodedHtml +
-                "&hideInput=1"
+                "&hideInput=1&clusterSize=1"
         );
     }
 }
