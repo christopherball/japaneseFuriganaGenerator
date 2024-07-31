@@ -142,6 +142,7 @@ function generateFurigana(text) {
                 document.getElementById("outputRenderedHTML").innerHTML +=
                     outputHtml;
             });
+            document.getElementById("generateButton").disabled = false;
         });
 }
 
@@ -175,6 +176,7 @@ function onGenerateButton() {
     document.getElementById("outputHTML").value = "";
     document.getElementById("outputAnkiShorthand").innerHTML = "";
     document.getElementById("outputRenderedHTML").innerHTML = "";
+    document.getElementById("generateButton").disabled = true;
     generateFurigana(inputText);
 }
 
