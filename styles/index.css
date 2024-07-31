@@ -1,6 +1,6 @@
 html,
 body {
-    height: calc(100vh - 30px);
+    height: calc(100vh - 15px);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -56,15 +56,6 @@ div#outputAnkiShorthand {
     border-radius: 10px;
     padding: 5px;
     background-color: #2a2a2a;
-}
-
-div.dHead,
-div.dTerm {
-    font-size: 16px !important;
-}
-
-div.dHead {
-    margin-top: 16px;
 }
 
 div.footer {

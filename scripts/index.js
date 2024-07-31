@@ -102,52 +102,31 @@ function generateFurigana(text) {
                     });
             }
 
-            let definitionsReached = false;
-
             chunks.forEach((chunk, index) => {
                 let outputHtml = "";
+                const tokens = tokenizer.tokenize(chunk);
 
-                // Optional 'Definitions' section defined at bottom of input.
-                if (chunk == "Definitions") {
-                    definitionsReached = true;
-                    outputHtml += "<div><div class='dHead'>Definitions</div>";
-                } else if (
-                    definitionsReached == true &&
-                    index < chunks.length - 1
-                ) {
-                    outputHtml += "<div class='dTerm'>" + chunk + "</div>";
-                } else if (
-                    definitionsReached == true &&
-                    index == chunks.length - 1
-                ) {
-                    outputHtml += "</div>";
-                } else {
-                    const tokens = tokenizer.tokenize(chunk);
+                tokens.forEach((token) => {
+                    let readingHiragana = wanakana.toHiragana(token.reading);
 
-                    tokens.forEach((token) => {
-                        let readingHiragana = wanakana.toHiragana(
-                            token.reading
+                    if (
+                        token.reading !== undefined &&
+                        token.surface_form !== readingHiragana &&
+                        token.surface_form !== token.reading
+                    ) {
+                        outputHtml += splitToken(
+                            token.surface_form,
+                            readingHiragana
                         );
-
-                        if (
-                            token.reading !== undefined &&
-                            token.surface_form !== readingHiragana &&
-                            token.surface_form !== token.reading
-                        ) {
-                            outputHtml += splitToken(
-                                token.surface_form,
-                                readingHiragana
-                            );
-                        } else {
-                            outputHtml += token.surface_form;
-                        }
-                    });
-                    if (index < chunks.length - 1) {
-                        if (parseMode == "single") {
-                            outputHtml += "<br/>";
-                        } else if (parseMode == "double") {
-                            outputHtml += "<br/><br/>";
-                        }
+                    } else {
+                        outputHtml += token.surface_form;
+                    }
+                });
+                if (index < chunks.length - 1) {
+                    if (parseMode == "single") {
+                        outputHtml += "<br/>";
+                    } else if (parseMode == "double") {
+                        outputHtml += "<br/><br/>";
                     }
                 }
 
