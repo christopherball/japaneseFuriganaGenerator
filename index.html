@@ -21,23 +21,15 @@
                     cols="50"
                     placeholder="ここに日本語を書いて下さい。"></textarea>
             </div>
-            <div class="inputContainer">
-                <input
-                    id="definition"
-                    placeholder="Optional: highlight unknown term, type definition, and insert." />
-            </div>
             <div>
                 <button id="generateButton">Generate Furigana</button>
-                <button id="defineButton">Insert Definition</button>
                 <select name="lineBreak" id="lineBreak">
-                    <option value="default">
-                        Sentence Parse Mode: Default (As Is)
-                    </option>
+                    <option value="default">Parse Mode: Default</option>
                     <option value="single">
-                        Sentence Parse Mode: Single Break
+                        Parse Mode: Single Line Break
                     </option>
                     <option value="double">
-                        Sentence Parse Mode: Double Break
+                        Parse Mode: Double Line Break
                     </option>
                 </select>
             </div>

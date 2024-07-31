@@ -198,29 +198,6 @@ function onGenerateButton() {
     generateFurigana(inputText);
 }
 
-function onInsertDefinition() {
-    let definition = document.getElementById("definition").value;
-
-    if (definition != null && definition.length > 0) {
-        document.getElementById("inputText").value +=
-            document.getElementById("inputText").value.indexOf("Definitions") !=
-            -1
-                ? definition + "\n"
-                : "\n\n" + "Definitions\n" + definition + "\n";
-        document.getElementById("definition").value = "";
-    }
-}
-
-let lastSelectedTerm = "";
-
-function onSelectTerm(event) {
-    const selection = event.target.value.substring(
-        event.target.selectionStart,
-        event.target.selectionEnd
-    );
-    lastSelectedTerm = selection + ": ";
-}
-
 function main() {
     document
         .getElementById("generateButton")
@@ -239,21 +216,6 @@ function main() {
     document
         .getElementById("playButton")
         .addEventListener("click", onPlayMatchMaker);
-
-    document.getElementById("definition").addEventListener("click", () => {
-        if (document.getElementById("definition").value.length == 0) {
-            document.getElementById("definition").value = lastSelectedTerm;
-            lastSelectedTerm = "";
-        }
-    });
-
-    document
-        .getElementById("defineButton")
-        .addEventListener("click", onInsertDefinition);
-
-    document
-        .getElementById("inputText")
-        .addEventListener("select", onSelectTerm);
 
     document
         .getElementById("outputHTML")
