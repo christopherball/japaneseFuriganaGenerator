@@ -158,7 +158,7 @@ function onPlayMatchMaker() {
     Base64.extendString();
     const encodedHtml = document
         .getElementById("outputHTML")
-        .value.replaceAll("<br/>")
+        .value.replaceAll("<br/>", "")
         .toBase64URL();
 
     if (encodedHtml.length > 0) {
