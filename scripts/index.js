@@ -86,7 +86,22 @@ function generateFurigana(text) {
                 return;
             }
 
-            const chunks = text.split(/\n/g);
+            const parseMode = document.getElementById("lineBreak").value;
+            let chunks = null;
+
+            if (parseMode == "default") {
+                chunks = text.split(/\n/g).map((c) => {
+                    return c + "<br/>";
+                });
+            } else {
+                chunks = text
+                    .split("。")
+                    .filter((c) => c.length > 0)
+                    .map((c) => {
+                        return c + "。";
+                    });
+            }
+
             let definitionsReached = false;
 
             chunks.forEach((chunk, index) => {
@@ -127,6 +142,13 @@ function generateFurigana(text) {
                             outputHtml += token.surface_form;
                         }
                     });
+                    if (index < chunks.length - 1) {
+                        if (parseMode == "single") {
+                            outputHtml += "<br/>";
+                        } else if (parseMode == "double") {
+                            outputHtml += "<br/><br/>";
+                        }
+                    }
                 }
 
                 document.getElementById("outputHTML").value += outputHtml;
