@@ -130,7 +130,8 @@ function generateFurigana(text) {
                     }
                 }
 
-                document.getElementById("outputHTML").value += outputHtml;
+                document.getElementById("outputHTML").value +=
+                    outputHtml.trim();
                 document.getElementById("outputAnkiShorthand").innerHTML +=
                     outputHtml
                         .replaceAll("<ruby>", " ")
@@ -143,6 +144,9 @@ function generateFurigana(text) {
                     outputHtml;
             });
             document.getElementById("generateButton").disabled = false;
+            document
+                .getElementById("outputHTML")
+                .dispatchEvent(new Event("input"));
         });
 }
 
@@ -211,7 +215,15 @@ function main() {
                 .replaceAll("</rt>", "]")
                 .replace(/<div.*|<\/div>/gm, "")
                 .trim();
+
+            this.style.height = "auto";
+            this.style.height = this.scrollHeight + "px";
         });
+
+    document.getElementById("inputText").addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+    });
 }
 
 window.onload = main();

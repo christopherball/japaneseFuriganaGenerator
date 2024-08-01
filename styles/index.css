@@ -31,6 +31,9 @@ textarea {
     border-radius: 10px;
     padding: 5px;
     font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    overflow: hidden;
+    resize: none;
 }
 
 button {
