@@ -224,6 +224,15 @@ function main() {
         this.style.height = "auto";
         this.style.height = this.scrollHeight + "px";
     });
+
+    document
+        .getElementById("exampleLink")
+        .addEventListener("click", function () {
+            document.getElementById("inputText").value = this.dataset.example;
+            document
+                .getElementById("generateButton")
+                .dispatchEvent(new Event("click"));
+        });
 }
 
 window.onload = main();
