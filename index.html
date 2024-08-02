@@ -42,14 +42,25 @@
             <div class="textAreaContainer">
                 <textarea id="outputHTML" rows="4" cols="50"></textarea>
             </div>
+            <div>
+                <button id="copyButton1">Copy</button>
+            </div>
             <br />
             <div class="subSectionTitle">Render Preview</div>
             <div class="outputContainer">
                 <div id="outputRenderedHTML"></div>
             </div>
             <div>
-                <button id="copyButton1">Copy</button>
                 <button id="playButton">Play Match Maker</button>
+                <select name="playMode" id="playMode">
+                    <option value="default">Mode: Default</option>
+                    <option value="hideIshowM">
+                        Mode: Hide Input + Show Meanings
+                    </option>
+                    <option value="showIshowM">
+                        Mode: Show Input + Show Meanings
+                    </option>
+                </select>
             </div>
             <br />
             <div class="sectionTitle">Anki Shorthand</div>

@@ -167,11 +167,14 @@ function onPlayMatchMaker() {
         .toBase64URL();
 
     if (encodedHtml.length > 0) {
-        window.open(
-            "/linguistics/japaneseMatchMaker?html=" +
-                encodedHtml +
-                "&hideInput=1&clusterSize=1"
-        );
+        const playMode = document.getElementById("playMode").value;
+        let qs = "&hideInput=1&clusterSize=1";
+
+        if (playMode == "hideIshowM")
+            qs = "&hideInput=1&clusterSize=1&meaning=1";
+        else if (playMode == "showIshowM") qs = "&clusterSize=1&meaning=1";
+
+        window.open("/linguistics/japaneseMatchMaker?html=" + encodedHtml + qs);
     }
 }
 
