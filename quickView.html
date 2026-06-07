@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Japanese Furigana Generator</title>
+        <script
+            type="text/javascript"
+            src="scripts/kuromoji/build/kuromoji.js"></script>
+        <script type="text/javascript" src="scripts/wanakana.min.js"></script>
+        <script type="text/javascript" src="scripts/base64.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    </head>
+    <body>
+        <div class="content">
+            <h3>Japanese Furigana Generator</h3>
+            <div class="sectionTitle">
+                Input (<a
+                    id="exampleLink"
+                    href="#"
+                    data-example="昨日の夜、奇妙な夢を見た。緑色の文字が流れている画面の中にいた。意味がわからなかったけど、すごくリアルに感じた。"
+                    >Ex.1</a
+                >)
+            </div>
+            <div class="textAreaContainer">
+                <textarea
+                    id="inputText"
+                    rows="4"
+                    cols="50"
+                    placeholder="ここに日本語を書いて下さい。"></textarea>
+            </div>
+            <div>
+                <button id="pasteButton">Paste</button>
+                <button id="generateButton">Generate Furigana</button>
+                <select name="lineBreak" id="lineBreak">
+                    <option value="default">Mode: Default</option>
+                    <option value="single">Mode: Single Line Break</option>
+                    <option value="double">Mode: Double Line Break</option>
+                </select>
+            </div>
+            <div class="subSectionTitle">Render Preview</div>
+            <div class="outputContainer">
+                <div id="outputRenderedHTML"></div>
+            </div>
+        <script type="text/javascript" src="scripts/quickView.js"></script>
+    </body>
+</html>
